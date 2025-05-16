@@ -49,12 +49,14 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 
-//Database 
-await connectDB();
+
 //Routes
 app.use('/api/status', (req,res)=>res.send("server is live"));
 app.use('/api/auth', userRouter);
 app.use('/api/messages', messageRouter);
+
+//Database 
+await connectDB();
 
 //Listen to requests
 if(process.env.NODE_ENV !== "production"){ 
