@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import http from 'http';
 import "dotenv/config";
-import {connectDB} from "./lib/Db.js";
+import {connectDB} from "./lib/db.js";
 import userRouter from './routes/userRoutes.js';
 import messageRouter from './routes/messageRoutes.js';
 import { Server } from 'socket.io';
@@ -59,11 +59,9 @@ app.use('/api/messages', messageRouter);
 await connectDB();
 
 //Listen to requests
-if(process.env.NODE_ENV !== "production"){ 
-    const PORT = process.env.PORT || 5000
-    server.listen(PORT, () => console.log("Server is running on port :"+ PORT));
-    
-}
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log("Server is running on port :" + PORT));
+
 //export the server for vercel
 export default server;
 
