@@ -10,7 +10,7 @@ const Chatcontainer = () => {
   const {authUser,onlineUsers} =useContext(Authcontext);
   const scrollEnd = useRef();
   const [input, setInput] = useState('');
-
+console.log(messages);
 // handle send messgae
   const handleSendMessage = async(e) => {
     e.preventDefault();

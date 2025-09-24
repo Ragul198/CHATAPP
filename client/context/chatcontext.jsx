@@ -36,6 +36,7 @@ const getUsers=async()=>{
             if (data?.success) {
                 setMessages(data.messages);
             }
+            
         } catch (error) {
             console.log(error.message);
             toast.error(error.message);
