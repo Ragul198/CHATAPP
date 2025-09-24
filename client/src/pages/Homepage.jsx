@@ -4,21 +4,24 @@ import Sidebar from '../components/Sidebar'
 import Rightsidebar from '../components/Rightsidebar'
 import { ChatContext } from '../../context/chatcontext';
 
-
 const Homepage = () => {
-
     const {selectedUser} = useContext(ChatContext);
-  return (
-    <div className=' border w-full h-screen sm:px-[15%] sm:py-[5%] text-amber-300  '>
-    <div className={`grid grid-cols-1 relative  backdrop-blur-xl border-2 border-gray-600 rounded-2xl overflow-hidden h-full ${selectedUser ? 'md:grid-cols-[1fr_1.5_1fr] xl:grid-cols-[1fr_2fr_1fr]':'md:grid-cols-2' }`}>
-    <Sidebar />
-    <Chatcontainer  />
-    <Rightsidebar />
     
-    </div>
-    </div>
-
-  )
+    return (
+      <div className='min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4 sm:p-8'>
+        <div className={`
+          max-w-7xl mx-auto h-[calc(100vh-2rem)] sm:h-[calc(100vh-4rem)]
+          grid relative backdrop-blur-xl 
+          border border-purple-500/30 rounded-3xl overflow-hidden 
+          shadow-2xl shadow-purple-900/20
+          ${selectedUser ? 'md:grid-cols-[350px_1fr_300px] xl:grid-cols-[380px_1fr_320px]' : 'md:grid-cols-[350px_1fr]'}
+        `}>
+          <Sidebar />
+          <Chatcontainer />
+          {selectedUser && <Rightsidebar />}
+        </div>
+      </div>
+    )
 }
 
 export default Homepage
